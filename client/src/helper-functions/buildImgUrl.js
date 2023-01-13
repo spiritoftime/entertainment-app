@@ -1,5 +1,5 @@
-const buildImgUrl = (backdrop_path, size) => {
-  return 'https://image.tmdb.org/t/p/'+size+backdrop_path;
+const buildImgUrl = (backdrop_path) => {
+  return "https://image.tmdb.org/t/p/original" + backdrop_path;
 };
 
 export default buildImgUrl;

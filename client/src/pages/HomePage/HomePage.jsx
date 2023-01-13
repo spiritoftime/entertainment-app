@@ -15,12 +15,11 @@ const HomePage = () => {
     getAllMovies();
   }, []);
 
-  if (!movies) return <h1>Loading...</h1>;
+  if (movies === []) return <h1>Loading...</h1>;
 
   return (
     <>
-      <Navbar />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3.5 lg:gap-10  bg-darkBlue p-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3.5 lg:gap-10   p-4">
         {movies.map((movie) => (
           <Movie
             backdrop={movie.backdrop_path}
