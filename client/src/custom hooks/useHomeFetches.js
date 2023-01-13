@@ -20,31 +20,31 @@ const useHomeFetches = () => {
     const response = await customFetch("discover/movie/", {
       sort_by: "popularity.desc",
     });
-    dispatch({ type: "popular", payload: response.results });
+    dispatch({ type: "popular", payload: response.results.slice(0, 6) });
   };
   const getTopMovies = async () => {
     const response = await customFetch("movie/top_rated");
-    dispatch({ type: "top", payload: response.results });
+    dispatch({ type: "top", payload: response.results.slice(0, 6) });
   };
   const getTrendingMovie = async () => {
     const response = await customFetch("trending/movie/week");
-    dispatch({ type: "trending", payload: response.results });
+    dispatch({ type: "trending", payload: response.results.slice(0, 6) });
   };
   const getNowPlayingMovies = async () => {
     const response = await customFetch("movie/now_playing");
-    dispatch({ type: "nowPlaying", payload: response.results });
+    dispatch({ type: "nowPlaying", payload: response.results.slice(0, 6) });
   };
   const getUpcomingMovies = async () => {
     const response = await customFetch("movie/upcoming");
-    dispatch({ type: "upcoming", payload: response.results });
+    dispatch({ type: "upcoming", payload: response.results.slice(0, 6) });
   };
 
   useEffect(() => {
     getPopularMovies();
+    getUpcomingMovies();
+    getNowPlayingMovies();
     getTopMovies();
     getTrendingMovie();
-    getTopMovies();
-    getUpcomingMovies();
   }, []);
   // getNowPlayingMovies();
 

@@ -6,7 +6,7 @@ const Movie = (props) => {
     <div className="flex flex-col">
       <div>
         <img
-          src={buildImgUrl(backdrop, "w300")}
+          src={buildImgUrl(backdrop)}
           alt={"Movie image for" + title}
           className="rounded-lg"
         />

@@ -6,16 +6,15 @@ import LoadingSpinner from "../../shared components/LoadingSpinner";
 
 import useHomeFetches from "../../custom hooks/useHomeFetches";
 import Label from "../../shared components/Label";
+import Grid from "../../shared components/Grid";
 const HomePage = () => {
   const fetchedData = useHomeFetches();
   if (fetchedData === {}) return <LoadingSpinner />;
-  // const { trending, top, upcoming, popular, nowPlaying } = fetchedData;
-  const { popular } = fetchedData;
-
+  const { trending, top, upcoming, popular, nowPlaying } = fetchedData;
   return (
     <>
       <Label type="MOVIE" category="POPULAR" />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3.5 lg:gap-10 p-4">
+      <Grid>
         {popular &&
           popular.map((movie) => (
             <Movie
@@ -26,7 +25,46 @@ const HomePage = () => {
               title={movie.title}
             />
           ))}
-      </div>
+      </Grid>
+      <Label type="MOVIE" category="UPCOMING"></Label>
+      <Grid>
+        {upcoming &&
+          upcoming.map((movie) => (
+            <Movie
+              backdrop={movie.backdrop_path}
+              key={movie.id}
+              id={movie.id}
+              date={movie.release_date}
+              title={movie.title}
+            />
+          ))}
+      </Grid>
+      <Label type="MOVIE" category="NOW PLAYING"></Label>
+      <Grid>
+        {nowPlaying &&
+          nowPlaying.map((movie) => (
+            <Movie
+              backdrop={movie.backdrop_path}
+              key={movie.id}
+              id={movie.id}
+              date={movie.release_date}
+              title={movie.title}
+            />
+          ))}
+      </Grid>
+      <Label type="MOVIE" category="TOP"></Label>
+      <Grid>
+        {top &&
+          top.map((movie) => (
+            <Movie
+              backdrop={movie.backdrop_path}
+              key={movie.id}
+              id={movie.id}
+              date={movie.release_date}
+              title={movie.title}
+            />
+          ))}
+      </Grid>
     </>
   );
 };
