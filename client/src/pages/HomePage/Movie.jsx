@@ -8,7 +8,7 @@ const Movie = (props) => {
         <img
           src={buildImgUrl(backdrop, "w300")}
           alt={"Movie image for" + title}
-          className="rounded-lg h-164 w-110"
+          className="rounded-lg"
         />
       </div>
       <div className="flex font-light flex-row items-center gap-1.5">

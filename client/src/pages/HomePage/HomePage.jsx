@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Movie from "./Movie";
 import customFetch from "../../helper-functions/customFetch";
+import Navbar from "../../shared components/Navbar";
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
@@ -17,17 +18,20 @@ const HomePage = () => {
   if (!movies) return <h1>Loading...</h1>;
 
   return (
-    <div className="grid grid-cols-2 gap-x-3.5 bg-darkBlue p-4">
-      {movies.map((movie) => (
-        <Movie
-          backdrop={movie.backdrop_path}
-          key={movie.id}
-          id={movie.id}
-          date={movie.release_date}
-          title={movie.title}
-        />
-      ))}
-    </div>
+    <>
+      <Navbar />
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3.5 lg:gap-10  bg-darkBlue p-4">
+        {movies.map((movie) => (
+          <Movie
+            backdrop={movie.backdrop_path}
+            key={movie.id}
+            id={movie.id}
+            date={movie.release_date}
+            title={movie.title}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
