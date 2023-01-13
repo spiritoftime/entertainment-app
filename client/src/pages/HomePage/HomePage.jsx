@@ -7,12 +7,26 @@ import LoadingSpinner from "../../shared components/LoadingSpinner";
 import useHomeFetches from "../../custom hooks/useHomeFetches";
 import Label from "../../shared components/Label";
 import Grid from "../../shared components/Grid";
+import TrendingMovie from "./TrendingMovie";
 const HomePage = () => {
   const fetchedData = useHomeFetches();
   if (fetchedData === {}) return <LoadingSpinner />;
   const { trending, top, upcoming, popular, nowPlaying } = fetchedData;
   return (
     <>
+      <Label type="MOVIE" category="TRENDING" />
+      <div className="flex overflow-scroll   gap-4 p-4">
+        {trending &&
+          trending.map((movie) => (
+            <TrendingMovie
+              backdrop={movie.backdrop_path}
+              key={movie.id}
+              id={movie.id}
+              date={movie.release_date}
+              title={movie.title}
+            />
+          ))}
+      </div>
       <Label type="MOVIE" category="POPULAR" />
       <Grid>
         {popular &&
