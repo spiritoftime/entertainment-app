@@ -15,3 +15,9 @@ const customFetch = async (substr, paramObj, movie_url = BASE_URL) => {
 };
 
 export default customFetch;
+  // fetch(
+  //   "https://api.themoviedb.org/3/discover/movie?api_key=237e21f511ab3b26eab3c3968be39066&sort_by=popularity.desc"
+  // )
+  //   .then((response) => response.json())
+  //   .then((result) => console.log(result))
+  //   .catch((error) => console.log("error", error));
