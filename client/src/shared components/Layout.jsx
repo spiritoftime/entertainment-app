@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import attribution from "../assets/attribution.svg";
 const Layout = () => {
   return (
-    <main className="bg-darkBlue">
+    <main className="min-h-full bg-darkBlue">
       <Navbar />
       <Outlet></Outlet>
       <footer className="min-w-full flex flex-col gap-2 p-4">
