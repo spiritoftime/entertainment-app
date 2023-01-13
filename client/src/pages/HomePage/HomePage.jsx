@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import Movie from "./Movie";
+import classes from "./homepage.module.css";
 
 import Navbar from "../../shared components/Navbar";
 import LoadingSpinner from "../../shared components/LoadingSpinner";
@@ -15,7 +15,11 @@ const HomePage = () => {
   return (
     <>
       <Label type="MOVIE" category="TRENDING" />
-      <div className="flex overflow-scroll   gap-4 p-4">
+      <div
+        className={
+          `${classes["scrollbar"]} ` + "flex overflow-x-scroll gap-4 pb-2 m-4"
+        }
+      >
         {trending &&
           trending.map((movie) => (
             <TrendingMovie

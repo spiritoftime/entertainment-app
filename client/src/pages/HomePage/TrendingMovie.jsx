@@ -5,14 +5,14 @@ const TrendingMovie = (props) => {
   const { backdrop, id, date, title } = props;
   return (
     <div className="flex flex-col relative">
-      <div className="h-[140px] w-[240px] ">
+      <div className="h-[140px] w-[240px] md:h-[230px] md:w-[470px] ">
         <img
           src={buildImgUrl(backdrop)}
           alt={"Trending Movie image for" + title}
-          className="opacity-80 height-[140px] width-[240px] rounded-lg "
+          className="opacity-50 height-[140px] width-[240px] md:h-[230px] md:w-[470px] rounded-lg "
         />
       </div>
-      <div className="absolute bottom-[10%] left-[5%] ">
+      <div className="w-[90%] absolute bottom-[10%] md:bottom-[5%] left-[5%] ">
         <div className=" flex font-light flex-row items-center gap-1.5">
           <p className="text-white text-xs">{date.split("-")[0]}</p>
           <div className="flex items-center flex-row gap-1.5">
