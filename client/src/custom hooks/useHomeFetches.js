@@ -45,7 +45,7 @@ const useHomeFetches = () => {
   // getUpcomingMovies();
   useEffect(() => {
     getPopularMovies();
-    // getTopMovies();
+    getTopMovies(); // this results in an error
   }, []);
   // getNowPlayingMovies();
 

@@ -15,16 +15,16 @@ const HomePage = () => {
   return (
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3.5 lg:gap-10   p-4">
-        {popular &&
-          popular.map((movie) => (
-            <Movie
-              backdrop={movie.backdrop_path}
-              key={movie.id}
-              id={movie.id}
-              date={movie.release_date}
-              title={movie.title}
-            />
-          ))}
+        {/* need to check for popular && or there will be error */}
+        {popular.map((movie) => (
+          <Movie
+            backdrop={movie.backdrop_path}
+            key={movie.id}
+            id={movie.id}
+            date={movie.release_date}
+            title={movie.title}
+          />
+        ))}
       </div>
     </>
   );
