@@ -5,16 +5,17 @@ import Navbar from "../../shared components/Navbar";
 import LoadingSpinner from "../../shared components/LoadingSpinner";
 
 import useHomeFetches from "../../custom hooks/useHomeFetches";
+import Label from "../../shared components/Label";
 const HomePage = () => {
   const fetchedData = useHomeFetches();
-  console.log(fetchedData);
   if (fetchedData === {}) return <LoadingSpinner />;
   // const { trending, top, upcoming, popular, nowPlaying } = fetchedData;
   const { popular } = fetchedData;
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3.5 lg:gap-10   p-4">
+      <Label type="MOVIE" category="POPULAR" />
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3.5 lg:gap-10 p-4">
         {popular &&
           popular.map((movie) => (
             <Movie

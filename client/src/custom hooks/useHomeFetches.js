@@ -20,7 +20,6 @@ const useHomeFetches = () => {
     const response = await customFetch("discover/movie/", {
       sort_by: "popularity.desc",
     });
-    console.log(response.results);
     dispatch({ type: "popular", payload: response.results });
   };
   const getTopMovies = async () => {
@@ -40,12 +39,12 @@ const useHomeFetches = () => {
     dispatch({ type: "upcoming", payload: response.results });
   };
 
-  // getTrendingMovie();
-  // getTopMovies();
-  // getUpcomingMovies();
   useEffect(() => {
     getPopularMovies();
-    // getTopMovies();
+    getTopMovies();
+    getTrendingMovie();
+    getTopMovies();
+    getUpcomingMovies();
   }, []);
   // getNowPlayingMovies();
 

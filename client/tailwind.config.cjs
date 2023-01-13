@@ -6,6 +6,8 @@ module.exports = {
       colors: {
         darkBlue: "rgba(16, 20, 30, 1)",
         navColor: "rgba(22, 29, 47, 1)",
+        darkBlueTint: "#40434b",
+        navTint: "#454a59",
       },
     },
   },
