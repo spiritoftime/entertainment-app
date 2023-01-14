@@ -15,21 +15,23 @@ const IndividualPage = ({ genre }) => {
     <div className="flex flex-col md:flex-row p-4 gap-4">
       {details && (
         <img
-          className={classes["width"] + " mx-auto rounded-lg"}
+          className={classes["width"] + " mx-auto md:mx-0 rounded-lg"}
           src={buildImgUrl(details.poster_path)}
         />
       )}
-      <div className="text-white flex flex-col gap-4">
+      <div className="md:w-full text-white flex flex-col gap-4">
         {details && (
-          <p className="font-medium text-center">{details.original_title}</p>
+          <h2 className="text-xl font-medium text-center">
+            {details.original_title}
+          </h2>
         )}
         {details && (
-          <p className="font-bold text-gray-500 text-center">
+          <h3 className="text-md font-bold text-gray-500 text-center">
             {details.tagline}
-          </p>
+          </h3>
         )}
         {details && (
-          <p className="text-center font-medium">
+          <p className="text-3xl text-center font-medium">
             {(details.vote_average / 2).toFixed(1)}
           </p>
         )}
