@@ -1,7 +1,7 @@
 import React from "react";
 import buildImgUrl from "../../helper-functions/buildImgUrl";
 import tvSVG from "../../assets/television-svgrepo-com (1).svg";
-const Movie = (props) => {
+const Film = (props) => {
   const { backdrop, id, date, title, filmType } = props;
   return (
     <div className="flex flex-col">
@@ -40,4 +40,4 @@ const Movie = (props) => {
   );
 };
 
-export default Movie;
+export default Film;

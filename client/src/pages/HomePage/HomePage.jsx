@@ -1,4 +1,4 @@
-import Movie from "./Movie";
+import Film from "./Film";
 import classes from "./homepage.module.css";
 
 import Navbar from "../../shared components/Navbar";
@@ -35,7 +35,7 @@ const HomePage = () => {
       <Grid>
         {popular &&
           popular.map((movie) => (
-            <Movie
+            <Film
               filmType="Movie"
               backdrop={movie.backdrop_path}
               key={movie.id}
@@ -49,7 +49,7 @@ const HomePage = () => {
       <Grid>
         {upcoming &&
           upcoming.map((movie) => (
-            <Movie
+            <Film
               filmType="Movie"
               backdrop={movie.backdrop_path}
               key={movie.id}
@@ -63,7 +63,7 @@ const HomePage = () => {
       <Grid>
         {nowPlaying &&
           nowPlaying.map((movie) => (
-            <Movie
+            <Film
               filmType="Movie"
               backdrop={movie.backdrop_path}
               key={movie.id}
@@ -77,7 +77,7 @@ const HomePage = () => {
       <Grid>
         {top &&
           top.map((movie) => (
-            <Movie
+            <Film
               filmType="TV"
               backdrop={movie.backdrop_path}
               key={movie.id}
