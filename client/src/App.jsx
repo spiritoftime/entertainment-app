@@ -12,11 +12,23 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/trending/:filmId" element={<IndividualPage />} />
-        <Route path="/top/:filmId" element={<IndividualPage />} />
-        <Route path="/upcoming/:filmId" element={<IndividualPage />} />
-        <Route path="/nowPlaying/:filmId" element={<IndividualPage />} />
-        <Route path="/popular/:filmId" element={<IndividualPage />} />
+        <Route
+          path="/trending/:filmId"
+          element={<IndividualPage genre="movie" />}
+        />
+        <Route path="/top/:filmId" element={<IndividualPage genre="movie" />} />
+        <Route
+          path="/upcoming/:filmId"
+          element={<IndividualPage genre="movie" />}
+        />
+        <Route
+          path="/nowPlaying/:filmId"
+          element={<IndividualPage genre="movie" />}
+        />
+        <Route
+          path="/popular/:filmId"
+          element={<IndividualPage genre="movie" />}
+        />
       </Route>
     </Routes>
   );
