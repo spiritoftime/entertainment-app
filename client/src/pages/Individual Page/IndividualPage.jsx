@@ -21,7 +21,12 @@ const IndividualPage = ({ genre }) => {
       )}
       <div className="text-white flex flex-col gap-4">
         {details && (
-          <p className=" font-bold text-center">{details.original_title}</p>
+          <p className="font-medium text-center">{details.original_title}</p>
+        )}
+        {details && (
+          <p className="font-bold text-gray-500 text-center">
+            {details.tagline}
+          </p>
         )}
         {details && (
           <p className="text-center font-medium">
@@ -30,12 +35,15 @@ const IndividualPage = ({ genre }) => {
         )}
         {details && <Stars vote={Math.floor(details.vote_average / 2)} />}
         {details && (
-          <div className="flex  justify-between">
+          <div className="grid grid-cols-2 md:flex  md:justify-between gap-y-4">
+            <Detail title="Length" content={details.runtime + " mins"} />
             <Detail
               title="Language"
               contentType="language"
               content={details.original_language}
             />
+            <Detail title="Year" content={details.release_date.split("-")[0]} />
+            <Detail title="Status" content={details.status} />
           </div>
         )}
       </div>
