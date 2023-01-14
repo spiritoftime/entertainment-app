@@ -12,7 +12,6 @@ let api_obj = {
 // ); // returns https://example.com?foo=value&bar=2
 
 const customFetch = async (substr, paramObj = {}, movie_url = BASE_URL) => {
-  console.log(import.meta.env.VITE_API_KEY);
   if (paramObj !== {}) paramObj = { ...api_obj, ...paramObj };
   else if (paramObj === {}) paramObj = api_obj;
   let queryUrl = `${movie_url}${substr}?` + new URLSearchParams(paramObj);
