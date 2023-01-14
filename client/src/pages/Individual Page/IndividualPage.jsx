@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import LoadingSpinner from "../../shared components/LoadingSpinner";
 import buildImgUrl from "../../helper-functions/buildImgUrl";
 import classes from "./individualpage.module.css";
+import Stars from "./Stars";
+import Detail from "./Detail";
 const IndividualPage = ({ genre }) => {
   const { filmId } = useParams();
   const fetchedData = useIndividualFetch(genre, filmId);
@@ -17,11 +19,24 @@ const IndividualPage = ({ genre }) => {
           src={buildImgUrl(details.poster_path)}
         />
       )}
-      <div>
+      <div className="text-white flex flex-col gap-4">
         {details && (
-          <p className="text-white font-bold text-center">
-            {details.original_title}
+          <p className=" font-bold text-center">{details.original_title}</p>
+        )}
+        {details && (
+          <p className="text-center font-medium">
+            {(details.vote_average / 2).toFixed(1)}
           </p>
+        )}
+        {details && <Stars vote={Math.floor(details.vote_average / 2)} />}
+        {details && (
+          <div className="flex  justify-between">
+            <Detail
+              title="Language"
+              contentType="language"
+              content={details.original_language}
+            />
+          </div>
         )}
       </div>
     </div>
