@@ -8,7 +8,10 @@ const TrendingMovie = (props) => {
     navigate(relativePath);
   };
   return (
-    <div className=" cursor-pointer flex flex-col relative">
+    <div
+      onClick={navigateHandler}
+      className="cursor-pointer flex flex-col relative"
+    >
       <div className="h-[140px] w-[240px] md:h-[230px] md:w-[470px] ">
         <img
           src={buildImgUrl(backdrop)}
