@@ -1,10 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import buildImgUrl from "../../helper-functions/buildImgUrl";
 import tvSVG from "../../assets/television-svgrepo-com (1).svg";
 const Film = (props) => {
-  const { backdrop, id, date, title, filmType } = props;
+  const { backdrop, id, date, title, filmType, relativePath } = props;
+  const navigate = useNavigate();
+  const navigateHandler = () => {
+    navigate(relativePath);
+  };
   return (
-    <div className="flex flex-col">
+    <div onClick={navigateHandler} className="cursor-pointer flex flex-col">
       <div>
         <img
           src={buildImgUrl(backdrop)}

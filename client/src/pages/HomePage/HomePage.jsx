@@ -23,6 +23,7 @@ const HomePage = () => {
         {trending &&
           trending.map((movie) => (
             <TrendingMovie
+              relativePath={`/trending/${movie.id}`}
               backdrop={movie.backdrop_path}
               key={movie.id}
               id={movie.id}
@@ -36,6 +37,7 @@ const HomePage = () => {
         {popular &&
           popular.map((movie) => (
             <Film
+              relativePath={`/popular/${movie.id}`}
               filmType="Movie"
               backdrop={movie.backdrop_path}
               key={movie.id}
@@ -50,6 +52,7 @@ const HomePage = () => {
         {upcoming &&
           upcoming.map((movie) => (
             <Film
+              relativePath={`/upcoming/${movie.id}`}
               filmType="Movie"
               backdrop={movie.backdrop_path}
               key={movie.id}
@@ -64,6 +67,7 @@ const HomePage = () => {
         {nowPlaying &&
           nowPlaying.map((movie) => (
             <Film
+              relativePath={`/nowPlaying/${movie.id}`}
               filmType="Movie"
               backdrop={movie.backdrop_path}
               key={movie.id}
@@ -78,6 +82,7 @@ const HomePage = () => {
         {top &&
           top.map((movie) => (
             <Film
+              relativePath={`/top/${movie.id}`}
               filmType="TV"
               backdrop={movie.backdrop_path}
               key={movie.id}

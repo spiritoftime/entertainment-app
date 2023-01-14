@@ -1,10 +1,14 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 import buildImgUrl from "../../helper-functions/buildImgUrl";
 const TrendingMovie = (props) => {
-  const { backdrop, id, date, title } = props;
+  const { backdrop, id, date, title, relativePath } = props;
+  const navigate = useNavigate();
+  const navigateHandler = () => {
+    navigate(relativePath);
+  };
   return (
-    <div className="flex flex-col relative">
+    <div className=" cursor-pointer flex flex-col relative">
       <div className="h-[140px] w-[240px] md:h-[230px] md:w-[470px] ">
         <img
           src={buildImgUrl(backdrop)}
