@@ -10,7 +10,7 @@ import Grid from "../../shared components/Grid";
 import TrendingMovie from "./TrendingMovie";
 const HomePage = () => {
   const fetchedData = useHomeFetches();
-  if (fetchedData === {}) return <LoadingSpinner />;
+  if (Object.keys(fetchedData).length === 0) return <LoadingSpinner />;
   const { trending, top, upcoming, popular, nowPlaying } = fetchedData;
   return (
     <>
@@ -36,6 +36,7 @@ const HomePage = () => {
         {popular &&
           popular.map((movie) => (
             <Movie
+              filmType="Movie"
               backdrop={movie.backdrop_path}
               key={movie.id}
               id={movie.id}
@@ -49,6 +50,7 @@ const HomePage = () => {
         {upcoming &&
           upcoming.map((movie) => (
             <Movie
+              filmType="Movie"
               backdrop={movie.backdrop_path}
               key={movie.id}
               id={movie.id}
@@ -62,6 +64,7 @@ const HomePage = () => {
         {nowPlaying &&
           nowPlaying.map((movie) => (
             <Movie
+              filmType="Movie"
               backdrop={movie.backdrop_path}
               key={movie.id}
               id={movie.id}
@@ -75,6 +78,7 @@ const HomePage = () => {
         {top &&
           top.map((movie) => (
             <Movie
+              filmType="TV"
               backdrop={movie.backdrop_path}
               key={movie.id}
               id={movie.id}
