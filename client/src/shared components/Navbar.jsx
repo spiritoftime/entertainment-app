@@ -5,7 +5,7 @@ import image from "../assets/image-avatar.png";
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <nav className="justify-between min-w-full flex p-4 bg-navColor">
+    <nav className="justify-between min-w-full md:min-w-fit md:min-h-screen md:flex-col fixed flex p-4 bg-navColor">
       <div onClick={() => navigate("/")}>
         <svg width="25" height="20" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -14,7 +14,7 @@ const Navbar = () => {
           />
         </svg>
       </div>
-      <div className="flex gap-6">
+      <div className="flex md:flex-col gap-6">
         <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M8 0H1C.4 0 0 .4 0 1v7c0 .6.4 1 1 1h7c.6 0 1-.4 1-1V1c0-.6-.4-1-1-1Zm0 11H1c-.6 0-1 .4-1 1v7c0 .6.4 1 1 1h7c.6 0 1-.4 1-1v-7c0-.6-.4-1-1-1ZM19 0h-7c-.6 0-1 .4-1 1v7c0 .6.4 1 1 1h7c.6 0 1-.4 1-1V1c0-.6-.4-1-1-1Zm0 11h-7c-.6 0-1 .4-1 1v7c0 .6.4 1 1 1h7c.6 0 1-.4 1-1v-7c0-.6-.4-1-1-1Z"
