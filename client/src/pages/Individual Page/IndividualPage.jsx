@@ -3,7 +3,6 @@ import useIndividualFetch from "./useIndividualFetch";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../../shared components/LoadingSpinner";
 import buildImgUrl from "../../helper-functions/buildImgUrl";
-import classes from "./individualpage.module.css";
 import Stars from "./Stars";
 import Detail from "./Detail";
 const IndividualPage = ({ genre }) => {
@@ -15,7 +14,7 @@ const IndividualPage = ({ genre }) => {
     <div className="flex flex-col md:flex-row p-4 gap-4">
       {details && (
         <img
-          className={classes["width"] + " mx-auto md:mx-0 rounded-lg"}
+          className={"w-[min(300px,_80%)] mx-auto md:mx-0 rounded-lg"}
           src={buildImgUrl(details.poster_path)}
         />
       )}
