@@ -7,6 +7,7 @@ import Stars from "./Stars";
 import Detail from "./Detail";
 import Overview from "./Overview";
 import Tags from "./Tags";
+import Button from "../../shared components/Button";
 const IndividualPage = ({ genre }) => {
   const { filmId } = useParams();
   const fetchedData = useIndividualFetch(genre, filmId);
@@ -54,6 +55,15 @@ const IndividualPage = ({ genre }) => {
         {details && <Overview overview={details.overview} />}
         {details && <Tags categoryName="Genres" detail={details.genres} />}
         {details && <Tags categoryName="Casts" detail={casts} />}
+        <div className="btn-div flex gap-4">
+          {details && <Button url={details.homepage} name="Website" />}
+          {details && (
+            <Button
+              url={"https://www.imdb.com/title/" + details.imdb_id}
+              name="IMDB Link"
+            />
+          )}
+        </div>
       </div>
     </div>
   );
