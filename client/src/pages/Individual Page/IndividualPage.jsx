@@ -5,6 +5,8 @@ import LoadingSpinner from "../../shared components/LoadingSpinner";
 import buildImgUrl from "../../helper-functions/buildImgUrl";
 import Stars from "./Stars";
 import Detail from "./Detail";
+import Overview from "./Overview";
+import Genres from "./Genres";
 const IndividualPage = ({ genre }) => {
   const { filmId } = useParams();
   const fetchedData = useIndividualFetch(genre, filmId);
@@ -14,7 +16,7 @@ const IndividualPage = ({ genre }) => {
     <div className="flex flex-col md:flex-row p-4 gap-4">
       {details && (
         <img
-          className={"w-[min(300px,_80%)] mx-auto md:mx-0 rounded-lg"}
+          className={"w-[min(200px,_80%)] mx-auto md:mx-0 rounded-lg"}
           src={buildImgUrl(details.poster_path)}
         />
       )}
@@ -47,6 +49,8 @@ const IndividualPage = ({ genre }) => {
             <Detail title="Status" content={details.status} />
           </div>
         )}
+        {details && <Overview overview={details.overview} />}
+        {details && <Genres genres={details.genres} />}
       </div>
     </div>
   );

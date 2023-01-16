@@ -5,7 +5,7 @@ import image from "../assets/image-avatar.png";
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <nav className="justify-between min-w-full md:min-w-fit md:min-h-screen md:flex-col fixed flex p-4 bg-navColor">
+    <nav className="justify-between min-w-full md:min-w-fit md:min-h-screen md:flex-col md:fixed flex p-4 bg-navColor">
       <div onClick={() => navigate("/")}>
         <svg width="25" height="20" xmlns="http://www.w3.org/2000/svg">
           <path
