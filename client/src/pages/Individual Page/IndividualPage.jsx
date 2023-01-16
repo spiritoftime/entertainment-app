@@ -16,7 +16,9 @@ const IndividualPage = ({ genre }) => {
     <div className="flex flex-col md:flex-row p-4 gap-4">
       {details && (
         <img
-          className={"w-[min(200px,_80%)] mx-auto md:mx-0 rounded-lg"}
+          className={
+            "w-[min(200px,_80%)] md:w-[min(400px,_80%)] mx-auto  md:mx-0 rounded-lg"
+          }
           src={buildImgUrl(details.poster_path)}
         />
       )}
