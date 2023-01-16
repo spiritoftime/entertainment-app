@@ -6,7 +6,7 @@ import buildImgUrl from "../../helper-functions/buildImgUrl";
 import Stars from "./Stars";
 import Detail from "./Detail";
 import Overview from "./Overview";
-import Genres from "./Genres";
+import Tags from "./Tags";
 const IndividualPage = ({ genre }) => {
   const { filmId } = useParams();
   const fetchedData = useIndividualFetch(genre, filmId);
@@ -52,7 +52,8 @@ const IndividualPage = ({ genre }) => {
           </div>
         )}
         {details && <Overview overview={details.overview} />}
-        {details && <Genres genres={details.genres} />}
+        {details && <Tags categoryName="Genres" detail={details.genres} />}
+        {details && <Tags categoryName="Casts" detail={casts} />}
       </div>
     </div>
   );
