@@ -54,7 +54,7 @@ const IndividualPage = ({ genre }) => {
         )}
         {details && <Overview overview={details.overview} />}
         {details && <Tags categoryName="Genres" detail={details.genres} />}
-        {details && <Tags categoryName="Casts" detail={casts} />}
+        {casts && <Tags categoryName="Casts" detail={casts} />}
         <div className="btn-div flex gap-4">
           {details && <Button url={details.homepage} name="Website" />}
           {details && (

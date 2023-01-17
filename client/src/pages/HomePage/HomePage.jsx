@@ -12,9 +12,14 @@ const HomePage = () => {
   const fetchedData = useHomeFetches();
   if (Object.keys(fetchedData).length === 0) return <LoadingSpinner />;
   const { trending, top, upcoming, popular, nowPlaying } = fetchedData;
+  // to fix - the trending query route is totally screwed up
   return (
     <>
-      <Label type="MOVIE" category="TRENDING" />
+      <Label
+        relativePath="all/trending/movie/week"
+        type="MOVIE"
+        category="TRENDING"
+      />
       <div
         className={
           `${classes["scrollbar"]} ` + "flex overflow-x-scroll gap-4 pb-2 m-4"
@@ -32,7 +37,11 @@ const HomePage = () => {
             />
           ))}
       </div>
-      <Label type="MOVIE" category="POPULAR" />
+      <Label
+        relativePath="/all/popular/movie"
+        type="MOVIE"
+        category="POPULAR"
+      />
       <Grid>
         {popular &&
           popular.map((movie) => (
@@ -47,7 +56,11 @@ const HomePage = () => {
             />
           ))}
       </Grid>
-      <Label type="MOVIE" category="UPCOMING"></Label>
+      <Label
+        relativePath="/all/upcoming/movie"
+        type="MOVIE"
+        category="UPCOMING"
+      ></Label>
       <Grid>
         {upcoming &&
           upcoming.map((movie) => (
@@ -62,12 +75,16 @@ const HomePage = () => {
             />
           ))}
       </Grid>
-      <Label type="MOVIE" category="NOW PLAYING"></Label>
+      <Label
+        relativePath="/all/now_playing/movie"
+        type="MOVIE"
+        category="NOW PLAYING"
+      ></Label>
       <Grid>
         {nowPlaying &&
           nowPlaying.map((movie) => (
             <Film
-              relativePath={`/nowPlaying/${movie.id}`}
+              relativePath={`/now_playing/${movie.id}`}
               filmType="Movie"
               backdrop={movie.backdrop_path}
               key={movie.id}
@@ -77,7 +94,11 @@ const HomePage = () => {
             />
           ))}
       </Grid>
-      <Label type="MOVIE" category="TOP"></Label>
+      <Label
+        relativePath="/all/top_rated/movie"
+        type="MOVIE"
+        category="TOP"
+      ></Label>
       <Grid>
         {top &&
           top.map((movie) => (

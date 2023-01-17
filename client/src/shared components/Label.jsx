@@ -1,6 +1,10 @@
 import React from "react";
-
-const Label = ({ category, type }) => {
+import { useNavigate } from "react-router-dom";
+const Label = ({ category, type, relativePath }) => {
+  const navigate = useNavigate();
+  const redirectHandler = () => {
+    navigate(`${relativePath}`);
+  };
   // category is popular, type is movie
   return (
     <div className="px-4 pt-4 items-center flex justify-between">
@@ -12,7 +16,12 @@ const Label = ({ category, type }) => {
           </p>
         </div>
       </div>
-      <p className="text-xs text-navTint">SEE MORE</p>
+      <p
+        onClick={redirectHandler}
+        className="cursor-pointer text-xs text-navTint"
+      >
+        SEE MORE
+      </p>
     </div>
   );
 };
