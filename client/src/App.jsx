@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import IndividualPage from "./pages/Individual Page/IndividualPage";
 import Login from "./pages/LoginPage/Login";
 import Layout from "./shared components/Layout";
-let allMovies = [];
+
 function App() {
   const { filmId, filmType, category } = useParams();
   return (
