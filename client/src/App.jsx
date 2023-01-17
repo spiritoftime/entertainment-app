@@ -5,6 +5,7 @@ import AllPage from "./pages/AllPage/AllPage";
 import HomePage from "./pages/HomePage/HomePage";
 import IndividualPage from "./pages/Individual Page/IndividualPage";
 import Login from "./pages/LoginPage/Login";
+import Register from "./pages/register page/Register";
 import Layout from "./shared components/Layout";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Register />} />
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route

@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 const formSchema = Yup.object().shape({
@@ -13,8 +14,13 @@ const formSchema = Yup.object().shape({
     .required("Please type a password")
     .min(6, "Password length should be at least 6 characters")
     .max(12, "Password cannot exceed more than 12 characters"),
+
+  cPassword: Yup.string()
+    .min(6, "Password length should be at least 6 characters")
+    .max(12, "Password cannot exceed more than 12 characters")
+    .oneOf([Yup.ref("password")], "Passwords do not match"),
 });
-const Login = () => {
+const Register = () => {
   const {
     register,
     handleSubmit,
@@ -27,7 +33,7 @@ const Login = () => {
   return (
     <div className="bg-darkBlue min-h-screen flex justify-center items-center">
       <div
-        className={`bg-login w-[min(320px,_80%)] flex flex-col rounded-lg  h-[320px]`}
+        className={`bg-login w-[min(320px,_80%)] flex flex-col rounded-lg  h-[370px]`}
       >
         <p className="text-white font-light text-xl pl-6 py-6">Sign Up</p>
         <form
@@ -49,7 +55,7 @@ const Login = () => {
               )}
             />
           </div>
-          <div className="flex h-[50px] flex-col gap-4">
+          <div className="h-[50px] flex flex-col gap-4">
             <input
               className={`w-full border-b-gray-500 border-b-2 bg-login`}
               type="password"
@@ -64,21 +70,32 @@ const Login = () => {
               )}
             />
           </div>
-
+          <div className="h-[50px] flex flex-col gap-4">
+            <input
+              className={`w-full border-b-gray-500 border-b-2 bg-login`}
+              type="Password"
+              placeholder="Repeat Password"
+              {...register("cPassword")}
+            />
+            <ErrorMessage
+              errors={errors}
+              name="cPassword"
+              render={({ message }) => (
+                <p className="text-rose-500">{message}</p>
+              )}
+            />
+          </div>
           <button
-            className={`cursor-pointer mt- p-4 bg-rose-600 rounded-md`}
+            className={`cursor-pointer mb-[-2.6rem] p-4 bg-rose-600 rounded-md`}
             type="submit"
           >
-            Log In
+            Create an account
           </button>
         </form>
-        <div className="flex gap-2 text-xs mx-auto">
-          <p className=" text-gray-500">Don't have an account?</p>
-          <a
-            href="/signup"
-            className="cursor-pointer text-rose-500 font-medium"
-          >
-            Sign Up
+        <div className="flex gap-2 mt-16  text-xs mx-auto">
+          <p className=" text-gray-500">Already have an account?</p>
+          <a href="/login" className="cursor-pointer text-rose-500 font-medium">
+            Sign In
           </a>
         </div>
       </div>
@@ -86,4 +103,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
