@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 const formSchema = Yup.object().shape({
@@ -12,23 +12,32 @@ const formSchema = Yup.object().shape({
     ),
   password: Yup.string()
     .required("Please type a password")
-    .min(6, "Password length should be at least 6 characters")
-    .max(12, "Password cannot exceed more than 12 characters"),
+    .min(6, "Password length should be at least 6 characters"),
 
   cPassword: Yup.string()
     .min(6, "Password length should be at least 6 characters")
-    .max(12, "Password cannot exceed more than 12 characters")
     .oneOf([Yup.ref("password")], "Passwords do not match"),
 });
 const Register = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
+    setError,
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     console.log(e);
+    const res = await fetch("http://127.0.0.1:5000/api/auth/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: e.email, password: e.password }),
+    });
+    if (res.ok) navigate("/login");
+    const data = await res.json();
+    if (res.ok === false && data.msg)
+      setError("fetchError", { message: data.msg });
   };
   return (
     <div className="bg-darkBlue min-h-screen flex justify-center items-center">
@@ -38,12 +47,12 @@ const Register = () => {
         <p className="text-white font-light text-xl pl-6 py-6">Sign Up</p>
         <form
           onSubmit={handleSubmit(submitHandler)}
-          className="text-white text-xs font-light w-[min(279px,_90%)] h-[200px]  flex flex-col gap-4 pl-6"
+          className="text-white text-xs font-light w-[min(279px,_90%)] h-[220px]  flex flex-col gap-4 pl-6"
         >
           <div className="h-[50px] flex flex-col gap-4">
             <input
               {...register("email")}
-              className={`w-full border-b-gray-500 border-b-2 bg-login`}
+              className={`w-full border-b-gray-500 border-b-2 bg-login focus:bg-login focus:outline-none`}
               type="email"
               placeholder="Email address"
             />
@@ -57,7 +66,7 @@ const Register = () => {
           </div>
           <div className="h-[50px] flex flex-col gap-4">
             <input
-              className={`w-full border-b-gray-500 border-b-2 bg-login`}
+              className={`w-full border-b-gray-500 border-b-2 bg-login focus:outline-none`}
               type="password"
               placeholder="Password"
               {...register("password")}
@@ -72,7 +81,7 @@ const Register = () => {
           </div>
           <div className="h-[50px] flex flex-col gap-4">
             <input
-              className={`w-full border-b-gray-500 border-b-2 bg-login`}
+              className={`w-full border-b-gray-500 border-b-2 bg-login focus:outline-none`}
               type="Password"
               placeholder="Repeat Password"
               {...register("cPassword")}
@@ -86,13 +95,16 @@ const Register = () => {
             />
           </div>
           <button
-            className={`cursor-pointer mb-[-2.6rem] p-4 bg-rose-600 rounded-md`}
+            className={`cursor-pointer  p-4 bg-rose-600 rounded-md`}
             type="submit"
           >
             Create an account
           </button>
+          {errors.fetchError && (
+            <p className="text-rose-500">{errors.fetchError?.message}</p>
+          )}
         </form>
-        <div className="flex gap-2 mt-16  text-xs mx-auto">
+        <div className="flex gap-2 mt-auto mb-6  text-xs mx-auto">
           <p className=" text-gray-500">Already have an account?</p>
           <a href="/login" className="cursor-pointer text-rose-500 font-medium">
             Sign In

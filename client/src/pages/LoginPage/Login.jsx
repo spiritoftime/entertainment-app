@@ -29,7 +29,7 @@ const Login = () => {
       <div
         className={`bg-login w-[min(320px,_80%)] flex flex-col rounded-lg  h-[320px]`}
       >
-        <p className="text-white font-light text-xl pl-6 py-6">Sign Up</p>
+        <p className="text-white font-light text-xl pl-6 py-6">Login</p>
         <form
           onSubmit={handleSubmit(submitHandler)}
           className="text-white text-xs font-light w-[min(279px,_90%)] h-[200px]  flex flex-col gap-4 pl-6"
