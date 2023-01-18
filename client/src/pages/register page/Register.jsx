@@ -28,7 +28,6 @@ const Register = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
   const submitHandler = async (e) => {
-    console.log(e);
     const res = await fetch("http://127.0.0.1:5000/api/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -104,7 +103,7 @@ const Register = () => {
             <p className="text-rose-500">{errors.fetchError?.message}</p>
           )}
         </form>
-        <div className="flex gap-2 mt-auto mb-6  text-xs mx-auto">
+        <div className="flex gap-2 mt-auto mb-6 text-xs mx-auto">
           <p className=" text-gray-500">Already have an account?</p>
           <a href="/login" className="cursor-pointer text-rose-500 font-medium">
             Sign In

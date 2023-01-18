@@ -12,13 +12,13 @@ const login = async (req, res) => {
   const { password, email } = req.body;
   const userDoc = await User.findOne({ email: email });
   if (!userDoc) {
-    res.status(404).json({ error: "Please type in a valid email" });
+    res.status(404).json({ msg: "Please type in a valid email" });
     return;
   }
 
-  const checkPassword = userDoc.comparePassword(password);
+  const checkPassword = await userDoc.comparePassword(password);
   if (!checkPassword) {
-    res.status(401).json({ error: "Please type in a valid password" });
+    res.status(401).json({ msg: "Please type in a valid password" });
     return;
   }
   const token = userDoc.createJWT();

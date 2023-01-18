@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { useNavigate } from "react-router-dom";
+
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 const formSchema = Yup.object().shape({
@@ -15,14 +17,26 @@ const formSchema = Yup.object().shape({
     .max(12, "Password cannot exceed more than 12 characters"),
 });
 const Login = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
+    setError,
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     console.log(e);
+    const res = await fetch("http://127.0.0.1:5000/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: e.email, password: e.password }),
+    });
+    console.log(res);
+    if (res.ok) navigate("/");
+    const data = await res.json();
+    if (res.ok === false && data.msg)
+      setError("fetchError", { message: data.msg });
   };
   return (
     <div className="bg-darkBlue min-h-screen flex justify-center items-center">
@@ -37,7 +51,7 @@ const Login = () => {
           <div className="h-[50px] flex flex-col gap-4">
             <input
               {...register("email")}
-              className={`w-full border-b-gray-500 border-b-2 bg-login`}
+              className={`focus:bg-login focus:outline-none w-full border-b-gray-500 border-b-2 bg-login`}
               type="email"
               placeholder="Email address"
             />
@@ -51,7 +65,7 @@ const Login = () => {
           </div>
           <div className="flex h-[50px] flex-col gap-4">
             <input
-              className={`w-full border-b-gray-500 border-b-2 bg-login`}
+              className={`focus:bg-login focus:outline-none w-full border-b-gray-500 border-b-2 bg-login`}
               type="password"
               placeholder="Password"
               {...register("password")}
@@ -71,8 +85,11 @@ const Login = () => {
           >
             Log In
           </button>
+          {errors.fetchError && (
+            <p className="text-rose-500">{errors.fetchError?.message}</p>
+          )}
         </form>
-        <div className="flex gap-2 text-xs mx-auto">
+        <div className="flex gap-2 text-xs mt-auto mb-6 text-center mx-auto">
           <p className=" text-gray-500">Don't have an account?</p>
           <a
             href="/signup"
