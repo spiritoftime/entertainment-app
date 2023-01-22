@@ -26,12 +26,13 @@ const HomePage = () => {
         }
       >
         {trending &&
-          trending.map((movie) => (
+          trending.map((movie, idx) => (
             <TrendingMovie
               relativePath={`/trending/${movie.id}`}
               backdrop={movie.backdrop_path}
               key={movie.id}
               id={movie.id}
+              num={idx}
               date={movie.release_date}
               title={movie.title}
             />
@@ -44,13 +45,14 @@ const HomePage = () => {
       />
       <Grid>
         {popular &&
-          popular.map((movie) => (
+          popular.map((movie, idx) => (
             <Film
               relativePath={`/popular/${movie.id}`}
               filmType="Movie"
               backdrop={movie.backdrop_path}
               key={movie.id}
               id={movie.id}
+              num={idx}
               date={movie.release_date}
               title={movie.title}
             />
@@ -63,8 +65,9 @@ const HomePage = () => {
       ></Label>
       <Grid>
         {upcoming &&
-          upcoming.map((movie) => (
+          upcoming.map((movie, idx) => (
             <Film
+              num={idx}
               relativePath={`/upcoming/${movie.id}`}
               filmType="Movie"
               backdrop={movie.backdrop_path}
@@ -82,8 +85,9 @@ const HomePage = () => {
       ></Label>
       <Grid>
         {nowPlaying &&
-          nowPlaying.map((movie) => (
+          nowPlaying.map((movie, idx) => (
             <Film
+              num={idx}
               relativePath={`/now_playing/${movie.id}`}
               filmType="Movie"
               backdrop={movie.backdrop_path}
@@ -101,8 +105,9 @@ const HomePage = () => {
       ></Label>
       <Grid>
         {top &&
-          top.map((movie) => (
+          top.map((movie, idx) => (
             <Film
+              num={idx}
               relativePath={`/top/${movie.id}`}
               filmType="TV"
               backdrop={movie.backdrop_path}

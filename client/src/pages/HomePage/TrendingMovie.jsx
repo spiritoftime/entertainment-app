@@ -10,7 +10,7 @@ const TrendingMovie = (props) => {
   return (
     <div
       onClick={navigateHandler}
-      className="cursor-pointer flex flex-col relative"
+      className="cursor-pointer flex flex-col relative hover:translate-y-[-4px] duration-200  "
     >
       <div className="h-[140px] w-[240px] md:h-[230px] md:w-[470px] ">
         <img

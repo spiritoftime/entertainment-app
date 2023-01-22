@@ -32,9 +32,12 @@ const Login = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: e.email, password: e.password }),
     });
-    console.log(res);
-    if (res.ok) navigate("/");
+
     const data = await res.json();
+    if (res.ok) {
+      // add the token into header here
+      navigate("/");
+    }
     if (res.ok === false && data.msg)
       setError("fetchError", { message: data.msg });
   };

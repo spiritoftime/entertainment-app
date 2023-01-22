@@ -3,18 +3,27 @@ import { useNavigate } from "react-router-dom";
 import buildImgUrl from "../../helper-functions/buildImgUrl";
 import tvSVG from "../../assets/television-svgrepo-com (1).svg";
 const Film = (props) => {
-  const { backdrop, id, date, title, filmType, relativePath } = props;
+  const { backdrop, id, date, title, filmType, relativePath, num } = props;
   const navigate = useNavigate();
   const navigateHandler = () => {
     navigate(relativePath);
   };
   return (
-    <div onClick={navigateHandler} className="cursor-pointer flex flex-col">
+    <div
+      onClick={navigateHandler}
+      className={`${
+        num === 4 || num === 5 ? "col-span-2 " : ""
+      }cursor-pointer hover:translate-y-[-4px] duration-200  flex flex-col`}
+    >
       <div>
         <img
           src={buildImgUrl(backdrop)}
           alt={"Movie image for" + title}
-          className="rounded-lg"
+          className={`${
+            num === 4 || num === 5
+              ? "max-h-[200px] w-full object-left-top object-cover "
+              : ""
+          }rounded-lg`}
         />
       </div>
 
