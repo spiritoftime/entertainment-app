@@ -6,13 +6,13 @@ import AllFilm from "./AllFilm";
 import LoadingSpinner from "../../shared components/LoadingSpinner";
 import Pagination from "./Pagination";
 
-const AllPage = ({}) => {
+const AllPage = () => {
   const params = useParams();
-  console.log(params);
   const { filmType, category, duration = "" } = params;
-  const { fetchedData, setFetchedData, currPage, setCurrPage } = useAllFetch(
-    `${filmType}/${category}`
-  ); // fetches the first page
+  let substr = `${filmType}/${category}`;
+  if (category === "trending") substr = `${category}/${filmType}/week`;
+  const { fetchedData, setFetchedData, currPage, setCurrPage } =
+    useAllFetch(substr); // fetches the first page
   if (Object.keys(fetchedData).length === 0) return <LoadingSpinner />;
 
   return (
@@ -24,6 +24,7 @@ const AllPage = ({}) => {
             relativePath={`/now_playing/${movie.id}`}
             filmType="Movie"
             backdrop={movie.backdrop_path}
+            poster_path={movie.poster_path}
             key={movie.id}
             id={movie.id}
             date={movie.release_date}

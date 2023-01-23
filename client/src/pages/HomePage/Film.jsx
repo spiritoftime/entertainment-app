@@ -17,12 +17,12 @@ const Film = (props) => {
     >
       <div>
         <img
-          src={buildImgUrl(backdrop)}
+          src={backdrop ? buildImgUrl(backdrop) : buildImgUrl(poster_path)}
           alt={"Movie image for" + title}
           className={`${
             num === 4 || num === 5
-              ? "max-h-[200px] w-full object-left-top object-cover "
-              : ""
+              ? "max-h-[200px] w-full object-left-top object-cover aspect-video "
+              : "aspect-video object-cover"
           }rounded-lg`}
         />
       </div>

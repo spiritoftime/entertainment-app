@@ -1,11 +1,18 @@
 import { useState } from "react";
 
-const Pagination = ({ currPage, setCurrPage, totalPage, setFetchedData }) => {
+const Pagination = ({
+  currPage,
+  setCurrPage,
+  totalPage,
+  setFetchedData,
+  setSearchParams,
+}) => {
   return (
     <div className="w-fit mx-auto border-2 border-black rounded-lg text-white flex items-center justify-center">
       <button
         onClick={() => {
           setCurrPage((prevPage) => prevPage - 1);
+          setSearchParams({ page: currPage - 1 });
         }}
         className={
           currPage > 1
@@ -42,6 +49,7 @@ const Pagination = ({ currPage, setCurrPage, totalPage, setFetchedData }) => {
       <button
         onClick={() => {
           setCurrPage((prevPage) => prevPage + 1);
+          setSearchParams({ page: currPage + 1 });
         }}
         className={
           currPage < totalPage

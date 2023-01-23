@@ -16,7 +16,7 @@ const HomePage = () => {
   return (
     <>
       <Label
-        relativePath="all/trending/movie/week"
+        relativePath="/trending/movie/week"
         type="MOVIE"
         category="TRENDING"
       />
@@ -28,6 +28,7 @@ const HomePage = () => {
         {trending &&
           trending.map((movie, idx) => (
             <TrendingMovie
+              poster_path={movie.poster_path}
               relativePath={`/trending/${movie.id}`}
               backdrop={movie.backdrop_path}
               key={movie.id}
@@ -39,7 +40,7 @@ const HomePage = () => {
           ))}
       </div>
       <Label
-        relativePath="/all/popular/movie"
+        relativePath="/all/popular/movie/"
         type="MOVIE"
         category="POPULAR"
       />
@@ -49,6 +50,7 @@ const HomePage = () => {
             <Film
               relativePath={`/popular/${movie.id}`}
               filmType="Movie"
+              poster_path={movie.poster_path}
               backdrop={movie.backdrop_path}
               key={movie.id}
               id={movie.id}
@@ -68,6 +70,7 @@ const HomePage = () => {
           upcoming.map((movie, idx) => (
             <Film
               num={idx}
+              poster_path={movie.poster_path}
               relativePath={`/upcoming/${movie.id}`}
               filmType="Movie"
               backdrop={movie.backdrop_path}
@@ -88,6 +91,7 @@ const HomePage = () => {
           nowPlaying.map((movie, idx) => (
             <Film
               num={idx}
+              poster_path={movie.poster_path}
               relativePath={`/now_playing/${movie.id}`}
               filmType="Movie"
               backdrop={movie.backdrop_path}
@@ -108,6 +112,7 @@ const HomePage = () => {
           top.map((movie, idx) => (
             <Film
               num={idx}
+              poster_path={movie.poster_path}
               relativePath={`/top/${movie.id}`}
               filmType="TV"
               backdrop={movie.backdrop_path}

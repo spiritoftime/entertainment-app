@@ -33,7 +33,7 @@ function App() {
           path="/popular/:filmId"
           element={<IndividualPage genre="movie" />}
         />
-        <Route path="/all/:category/:filmType" element={<AllPage />} />
+        <Route path="/:category/:filmType/week" element={<AllPage />} />
       </Route>
     </Routes>
   );
