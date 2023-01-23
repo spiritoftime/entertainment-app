@@ -31,7 +31,7 @@ const Navbar = () => {
           />
         </svg>
         <svg
-          onClick={() => navigate("/tv")}
+          onClick={() => navigate("/movie_categories")}
           className="cursor-pointer"
           width="20"
           height="20"
@@ -43,6 +43,7 @@ const Navbar = () => {
           />
         </svg>
         <svg
+          onClick={() => navigate("/tv_categories")}
           className="cursor-pointer"
           width="20"
           height="20"

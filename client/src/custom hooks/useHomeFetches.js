@@ -13,29 +13,29 @@ function fetchReducer(state, action) {
     return { ...state, nowPlaying: action.payload };
 }
 
-const useHomeFetches = () => {
+const useHomeFetches = (type) => {
   const [fetchedData, dispatch] = useReducer(fetchReducer, {});
 
   const getPopularMovies = async () => {
-    const response = await customFetch("discover/movie/", {
+    const response = await customFetch(`discover/${type}/`, {
       sort_by: "popularity.desc",
     });
     dispatch({ type: "popular", payload: response.results.slice(0, 6) });
   };
   const getTopMovies = async () => {
-    const response = await customFetch("movie/top_rated");
+    const response = await customFetch(`${type}/top_rated`);
     dispatch({ type: "top", payload: response.results.slice(0, 6) });
   };
   const getTrendingMovie = async () => {
-    const response = await customFetch("trending/movie/week");
+    const response = await customFetch(`trending/${type}/week`);
     dispatch({ type: "trending", payload: response.results.slice(0, 6) });
   };
   const getNowPlayingMovies = async () => {
-    const response = await customFetch("movie/now_playing");
+    const response = await customFetch(`${type}/now_playing`);
     dispatch({ type: "nowPlaying", payload: response.results.slice(0, 6) });
   };
   const getUpcomingMovies = async () => {
-    const response = await customFetch("movie/upcoming");
+    const response = await customFetch(`${type}/upcoming`);
     dispatch({ type: "upcoming", payload: response.results.slice(0, 6) });
   };
 

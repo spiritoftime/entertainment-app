@@ -2,7 +2,7 @@ const Pagination = ({
   currPage,
   setCurrPage,
   totalPage,
-
+  searchParams,
   setSearchParams,
 }) => {
   return (
@@ -10,7 +10,8 @@ const Pagination = ({
       <button
         onClick={() => {
           setCurrPage((prevPage) => prevPage - 1);
-          setSearchParams({ page: currPage - 1 });
+          searchParams.set("page", currPage - 1);
+          setSearchParams(searchParams);
         }}
         className={
           currPage > 1
@@ -47,7 +48,9 @@ const Pagination = ({
       <button
         onClick={() => {
           setCurrPage((prevPage) => prevPage + 1);
-          setSearchParams({ page: currPage + 1 });
+          searchParams.set("page", currPage + 1);
+
+          setSearchParams(searchParams);
         }}
         className={
           currPage < totalPage

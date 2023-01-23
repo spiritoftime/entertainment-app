@@ -2,18 +2,16 @@ import { useEffect, useState } from "react";
 import customFetch from "../../helper-functions/customFetch";
 import { useSearchParams } from "react-router-dom";
 // type = movie or tv, substr is the relative url path like in usehomefetches
-const useAllFetch = (substr) => {
+const useAllCategoriesFetch = (substr) => {
   let [searchParams, setSearchParams] = useSearchParams();
   let paramsObj = {};
   const [fetchedData, setFetchedData] = useState({});
   const [currPage, setCurrPage] = useState(+searchParams.get("page"));
-  if (substr.startsWith("discover")) {
-    paramsObj = { with_genres: +searchParams.get("genre") };
-  }
+
   const getFilms = async () => {
     const response = await customFetch(`${substr}`, {
       page: currPage,
-      ...paramsObj,
+      with_genres: +searchParams.get("genre"),
     });
     setFetchedData({ films: response });
   };
@@ -31,4 +29,4 @@ const useAllFetch = (substr) => {
   };
 };
 
-export default useAllFetch;
+export default useAllCategoriesFetch;

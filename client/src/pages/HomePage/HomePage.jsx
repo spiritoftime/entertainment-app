@@ -6,15 +6,15 @@ import useHomeFetches from "../../custom hooks/useHomeFetches";
 import Label from "../../shared components/Label";
 import Grid from "../../shared components/Grid";
 import TrendingMovie from "./TrendingMovie";
-const HomePage = () => {
-  const fetchedData = useHomeFetches();
+const HomePage = ({ type }) => {
+  const fetchedData = useHomeFetches(type);
   if (Object.keys(fetchedData).length === 0) return <LoadingSpinner />;
   const { trending, top, upcoming, popular, nowPlaying } = fetchedData;
   return (
     <>
       <Label
-        relativePath="/trending/movie/week"
-        type="MOVIE"
+        relativePath={`/trending/${type}/week`}
+        type={type}
         category="TRENDING"
       />
       <div
@@ -37,8 +37,8 @@ const HomePage = () => {
           ))}
       </div>
       <Label
-        relativePath="/all/popular/movie/"
-        type="MOVIE"
+        relativePath={`/all/popular/${type}/`}
+        type={type}
         category="POPULAR"
       />
       <Grid>
@@ -58,8 +58,8 @@ const HomePage = () => {
           ))}
       </Grid>
       <Label
-        relativePath="/all/upcoming/movie"
-        type="MOVIE"
+        relativePath={`/all/upcoming/${type}`}
+        type={type}
         category="UPCOMING"
       ></Label>
       <Grid>
@@ -79,8 +79,8 @@ const HomePage = () => {
           ))}
       </Grid>
       <Label
-        relativePath="/all/now_playing/movie"
-        type="MOVIE"
+        relativePath={`/all/now_playing/${type}`}
+        type={type}
         category="NOW PLAYING"
       ></Label>
       <Grid>
@@ -100,8 +100,8 @@ const HomePage = () => {
           ))}
       </Grid>
       <Label
-        relativePath="/all/top_rated/movie"
-        type="MOVIE"
+        relativePath={`/all/top_rated/${type}`}
+        type={type}
         category="TOP"
       ></Label>
       <Grid>
