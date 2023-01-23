@@ -18,19 +18,19 @@ const IndividualPage = ({ genre }) => {
       {details && (
         <img
           className={
-            "w-[min(200px,_80%)] md:w-[min(350px,_80%)] max-h-[600px] mx-auto  md:mx-0 rounded-lg"
+            "w-[min(200px,_80%)] md:w-[min(350px,_80%)] max-h-[600px] mx-auto  md:mx-0 rounded-lg "
           }
           src={buildImgUrl(details.poster_path)}
         />
       )}
       <div className="md:w-full md:max-w-[500px] lg:max-w-[700px] text-white flex flex-col gap-4">
         {details && (
-          <h2 className="text-xl font-medium text-center">
+          <h2 className="text-xl lg:text-2xl font-medium text-center">
             {details.original_title}
           </h2>
         )}
         {details && (
-          <h3 className="text-md font-bold text-gray-500 text-center">
+          <h3 className="text-md lg:text-xl font-bold text-gray-500 text-center">
             {details.tagline}
           </h3>
         )}

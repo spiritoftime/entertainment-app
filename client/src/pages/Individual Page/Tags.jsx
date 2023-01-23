@@ -9,8 +9,8 @@ const Tags = ({ detail, categoryName }) => {
           {categoryName}
         </p>
         <div className="flex flex-wrap gap-4 ">
-          {detail.map((genreObj) => {
-            return <Tag bgClass="bg-sky-700" name={genreObj.name} />;
+          {detail.map((genreObj, idx) => {
+            return <Tag key={idx} bgClass="bg-rose-700" name={genreObj.name} />;
           })}
         </div>
       </div>
@@ -22,8 +22,8 @@ const Tags = ({ detail, categoryName }) => {
           {categoryName}
         </p>
         <div className="flex flex-wrap gap-2 ">
-          {detail.map((castObj) => {
-            return <Tag type="cast" name={castObj.name} />;
+          {detail.map((castObj, idx) => {
+            return <Tag key={idx} type="cast" name={castObj.name} />;
           })}
         </div>
       </div>
