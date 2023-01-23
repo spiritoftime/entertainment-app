@@ -14,15 +14,7 @@ const AllFilm = (props) => {
       className={`cursor-pointer hover:translate-y-[-4px] duration-200  flex flex-col`}
     >
       <div>
-        <img
-          src={buildImgUrl(backdrop)}
-          alt={"Movie image for" + title}
-          className={`${
-            num === 4 || num === 5
-              ? "max-h-[200px] w-full object-left-top object-cover "
-              : ""
-          }rounded-lg`}
-        />
+        <img src={buildImgUrl(backdrop)} alt={"Movie image for" + title} />
       </div>
 
       <div className="flex font-light flex-row items-center gap-1.5">

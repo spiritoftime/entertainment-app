@@ -1,9 +1,19 @@
-import React from "react";
+import { useState } from "react";
 
-const Pagination = ({ currPage, totalPage }) => {
+const Pagination = ({ currPage, setCurrPage, totalPage, setFetchedData }) => {
   return (
-    <div className="w-fit mx-auto border-2 rounded-lg text-white flex items-center  gap-3 justify-center ">
-      <button className="gap-2 pl-2 py-2  flex items-center cursor-pointer">
+    <div className="w-fit mx-auto border-2 border-black rounded-lg text-white flex items-center justify-center">
+      <button
+        onClick={() => {
+          setCurrPage((prevPage) => prevPage - 1);
+        }}
+        className={
+          currPage > 1
+            ? `gap-2 px-2 py-2  flex items-center cursor-pointer hover:bg-black`
+            : "gap-2 px-2 py-2  flex items-center"
+        }
+        disabled={currPage === 1}
+      >
         <svg
           fill="white"
           height="12px"
@@ -28,8 +38,17 @@ const Pagination = ({ currPage, totalPage }) => {
         </svg>
         <span>Prev</span>
       </button>
-      <p className="bg-black px-2 py-2 ">{`Page ${currPage} of ${totalPage}`}</p>
-      <button className="gap-2 pr-2 py-2  flex items-center cursor-pointer">
+      <p className="bg-white text-black px-2  py-2 ">{`Page ${currPage} of ${totalPage}`}</p>
+      <button
+        onClick={() => {
+          setCurrPage((prevPage) => prevPage + 1);
+        }}
+        className={
+          currPage < totalPage
+            ? `gap-2 px-2 py-2  flex items-center cursor-pointer hover:bg-black`
+            : "gap-2 px-2 py-2  flex items-center"
+        }
+      >
         <span>Next</span>
         <svg
           width="12px"

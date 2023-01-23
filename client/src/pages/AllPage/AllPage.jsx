@@ -10,7 +10,7 @@ const AllPage = ({}) => {
   const params = useParams();
   console.log(params);
   const { filmType, category, duration = "" } = params;
-  const { fetchedData, setFetchedData } = useAllFetch(
+  const { fetchedData, setFetchedData, currPage, setCurrPage } = useAllFetch(
     `${filmType}/${category}`
   ); // fetches the first page
   if (Object.keys(fetchedData).length === 0) return <LoadingSpinner />;
@@ -32,7 +32,9 @@ const AllPage = ({}) => {
         ))}
       </Grid>
       <Pagination
-        currPage={fetchedData.films.page}
+        currPage={currPage}
+        setCurrPage={setCurrPage}
+        setFetchedData={setFetchedData}
         totalPage={fetchedData.films.total_pages}
       />
     </div>
