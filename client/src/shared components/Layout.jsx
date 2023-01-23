@@ -2,11 +2,13 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import attribution from "../assets/attribution.svg";
+import SearchBar from "../pages/HomePage/SearchBar";
 const Layout = () => {
   return (
     <main className="min-h-screen bg-darkBlue">
       <Navbar />
       <div className="w-full md:w-[85%] lg:w-fit lg:mx-auto lg:max-w-[85%]  md:ml-auto md:mr-[5%]">
+        <SearchBar />
         <Outlet></Outlet>
       </div>
       <footer className="min-w-full flex flex-col gap-2 p-4">

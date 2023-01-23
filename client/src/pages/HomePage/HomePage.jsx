@@ -1,7 +1,5 @@
 import Film from "./Film";
 import classes from "./homepage.module.css";
-
-import Navbar from "../../shared components/Navbar";
 import LoadingSpinner from "../../shared components/LoadingSpinner";
 
 import useHomeFetches from "../../custom hooks/useHomeFetches";
@@ -12,7 +10,6 @@ const HomePage = () => {
   const fetchedData = useHomeFetches();
   if (Object.keys(fetchedData).length === 0) return <LoadingSpinner />;
   const { trending, top, upcoming, popular, nowPlaying } = fetchedData;
-  // to fix - the trending query route is totally screwed up
   return (
     <>
       <Label

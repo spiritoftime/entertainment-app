@@ -39,7 +39,7 @@ const IndividualPage = ({ genre }) => {
             {(details.vote_average / 2).toFixed(1)}
           </p>
         )}
-        {details && <Stars vote={Math.floor(details.vote_average / 2)} />}
+        {details && <Stars vote={(details.vote_average / 2).toFixed(1)} />}
         {details && (
           <div className="grid grid-cols-2 md:flex  md:justify-between gap-y-4">
             <Detail title="Length" content={details.runtime + " mins"} />
