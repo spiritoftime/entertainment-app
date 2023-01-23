@@ -26,7 +26,7 @@ function App() {
           element={<IndividualPage genre="movie" />}
         />
         <Route
-          path="/nowPlaying/:filmId"
+          path="/now_playing/:filmId"
           element={<IndividualPage genre="movie" />}
         />
         <Route

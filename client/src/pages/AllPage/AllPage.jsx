@@ -4,6 +4,7 @@ import useAllFetch from "./useAllFetch";
 import Grid from "../../shared components/Grid";
 import AllFilm from "./AllFilm";
 import LoadingSpinner from "../../shared components/LoadingSpinner";
+import Pagination from "./Pagination";
 
 const AllPage = ({}) => {
   const params = useParams();
@@ -15,7 +16,7 @@ const AllPage = ({}) => {
   if (Object.keys(fetchedData).length === 0) return <LoadingSpinner />;
 
   return (
-    <div className="text-white">
+    <div className="">
       <Grid>
         {fetchedData.films.results.map((movie, idx) => (
           <AllFilm
@@ -30,6 +31,10 @@ const AllPage = ({}) => {
           />
         ))}
       </Grid>
+      <Pagination
+        currPage={fetchedData.films.page}
+        totalPage={fetchedData.films.total_pages}
+      />
     </div>
   );
 };
