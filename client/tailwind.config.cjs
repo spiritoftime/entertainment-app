@@ -1,7 +1,12 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      lg: "1024px",
+      ...defaultTheme.screens,
+    },
     extend: {
       colors: {
         darkBlue: "rgba(16, 20, 30, 1)",

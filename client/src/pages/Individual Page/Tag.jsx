@@ -6,7 +6,7 @@ const Tag = ({ name, bgClass, type }) => {
       <div
         className={`max(64px,_fit-content) border-2 p-1  border-slate-600 rounded-md ${bgClass} flex self-center justify-self-center`}
       >
-        <p className="text-center	text-white whitespace-nowrap text-[7px] font-normal">
+        <p className="text-center	text-white whitespace-nowrap text-[7px] font-bold">
           {name}
         </p>
       </div>

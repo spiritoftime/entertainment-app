@@ -23,9 +23,7 @@ const Tags = ({ detail, categoryName }) => {
         </p>
         <div className="flex flex-wrap gap-2 ">
           {detail.map((castObj) => {
-            return (
-              <Tag type="cast" bgClass="bg-gray-700" name={castObj.name} />
-            );
+            return <Tag type="cast" name={castObj.name} />;
           })}
         </div>
       </div>

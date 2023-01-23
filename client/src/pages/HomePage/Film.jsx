@@ -12,7 +12,7 @@ const Film = (props) => {
     <div
       onClick={navigateHandler}
       className={`${
-        num === 4 || num === 5 ? "col-span-2 " : ""
+        num === 4 || num === 5 ? "lg:col-span-2 " : ""
       }cursor-pointer hover:translate-y-[-4px] duration-200  flex flex-col`}
     >
       <div>

@@ -14,16 +14,16 @@ const IndividualPage = ({ genre }) => {
   if (Object.keys(fetchedData).length === 0) return <LoadingSpinner />;
   const { details, casts } = fetchedData;
   return (
-    <div className="flex flex-col md:flex-row p-4 gap-4">
+    <div className=" md:mx-auto flex flex-col md:flex-row p-4 gap-4 md:gap-10">
       {details && (
         <img
           className={
-            "w-[min(200px,_80%)] md:w-[min(400px,_80%)] mx-auto  md:mx-0 rounded-lg"
+            "w-[min(200px,_80%)] md:w-[min(350px,_80%)] max-h-[600px] mx-auto  md:mx-0 rounded-lg"
           }
           src={buildImgUrl(details.poster_path)}
         />
       )}
-      <div className="md:w-full text-white flex flex-col gap-4">
+      <div className="md:w-full md:max-w-[500px] lg:max-w-[700px] text-white flex flex-col gap-4">
         {details && (
           <h2 className="text-xl font-medium text-center">
             {details.original_title}
