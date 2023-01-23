@@ -1,10 +1,8 @@
-import { useState } from "react";
-
 const Pagination = ({
   currPage,
   setCurrPage,
   totalPage,
-  setFetchedData,
+
   setSearchParams,
 }) => {
   return (

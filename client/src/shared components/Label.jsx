@@ -1,9 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, createSearchParams } from "react-router-dom";
 const Label = ({ category, type, relativePath }) => {
   const navigate = useNavigate();
   const redirectHandler = () => {
-    navigate(`${relativePath}`);
+    navigate({
+      pathname: relativePath,
+      search: createSearchParams({ page: 1 }).toString(),
+    });
   };
   // category is popular, type is movie
   return (

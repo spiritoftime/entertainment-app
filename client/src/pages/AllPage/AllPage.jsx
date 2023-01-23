@@ -11,7 +11,7 @@ const AllPage = () => {
   const { filmType, category, duration = "" } = params;
   let substr = `${filmType}/${category}`;
   if (category === "trending") substr = `${category}/${filmType}/week`;
-  const { fetchedData, setFetchedData, currPage, setCurrPage } =
+  const { fetchedData, setSearchParams, currPage, setCurrPage } =
     useAllFetch(substr); // fetches the first page
   if (Object.keys(fetchedData).length === 0) return <LoadingSpinner />;
 
@@ -35,7 +35,7 @@ const AllPage = () => {
       <Pagination
         currPage={currPage}
         setCurrPage={setCurrPage}
-        setFetchedData={setFetchedData}
+        setSearchParams={setSearchParams}
         totalPage={fetchedData.films.total_pages}
       />
     </div>
