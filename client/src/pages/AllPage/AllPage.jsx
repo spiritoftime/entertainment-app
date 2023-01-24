@@ -8,13 +8,13 @@ import Pagination from "./Pagination";
 
 const AllPage = ({ type = "" }) => {
   const params = useParams();
-
+  console.log(params);
   const { filmType, category, duration = "" } = params;
   let substr = "";
   let paramsObj = {};
   if (params.length === 0) substr = `${filmType}/${category}`;
   else {
-    substr = `discover/${type}`;
+    substr = `discover/${type.toLowerCase()}`;
   }
   if (category === "trending") substr = `${category}/${filmType}/week`;
 
@@ -26,11 +26,11 @@ const AllPage = ({ type = "" }) => {
     <div className="">
       <Grid>
         {fetchedData.films.results.map((movie, idx) =>
-          type !== "tv" ? (
+          type !== "TV" ? (
             <AllFilm
               num={idx}
               relativePath={`/now_playing/${movie.id}`}
-              filmType={type}
+              filmType={filmType}
               backdrop={movie.backdrop_path}
               poster_path={movie.poster_path}
               key={movie.id}

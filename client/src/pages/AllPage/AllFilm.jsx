@@ -45,7 +45,7 @@ const AllFilm = (props) => {
           ) : (
             <img className="w-3 h-3" src={tvSVG} />
           )}
-          <p className="text-white text-xs">{filmType}</p>
+          <p className="capitalize text-white text-xs">{filmType}</p>
         </div>
       </div>
       <div>

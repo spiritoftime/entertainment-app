@@ -8,7 +8,7 @@ const Navbar = () => {
     navigate("/login");
   };
   return (
-    <nav className="justify-between min-w-full md:min-w-fit md:h-[500px] md:rounded-lg md:flex-col md:fixed flex p-4 bg-navColor">
+    <nav className="justify-between min-w-full md:min-w-fit md:h-[500px] md:mt-11 md:rounded-lg md:flex-col md:fixed flex p-4 bg-navColor">
       <div className="cursor-pointer" onClick={() => navigate("/")}>
         <svg width="25" height="20" xmlns="http://www.w3.org/2000/svg">
           <path

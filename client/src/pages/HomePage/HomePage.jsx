@@ -111,7 +111,7 @@ const HomePage = ({ type }) => {
               num={idx}
               poster_path={movie.poster_path}
               relativePath={`/top/${movie.id}`}
-              filmType="TV"
+              filmType="Movie"
               backdrop={movie.backdrop_path}
               key={movie.id}
               id={movie.id}

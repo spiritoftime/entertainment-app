@@ -1,7 +1,6 @@
 import { Routes, Route, useParams } from "react-router-dom";
 
 import "./App.css";
-import AllCategoriesPage from "./pages/AllCategoriesPage/AllCategoriesPage";
 import AllPage from "./pages/AllPage/AllPage";
 import Categories from "./pages/categories page/Categories";
 import HomePage from "./pages/HomePage/HomePage";
@@ -20,8 +19,9 @@ function App() {
         <Route index element={<HomePage type="movie" />} />
         <Route path="/tv_categories" element={<Categories type="tv" />} />
         <Route path="/movie_categories" element={<Categories type="movie" />} />
-        <Route path="/movie" element={<AllPage type="movie" />} />
-        <Route path="/tv" element={<AllPage type="tv" />} />
+        <Route path="/movie" element={<AllPage type="Movie" />} />
+        <Route path="/tv" element={<AllPage type="TV" />} />
+        <Route path="/search" element={<AllPage />} />
 
         <Route
           path="/trending/:filmId"
