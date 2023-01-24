@@ -41,6 +41,7 @@ function App() {
           element={<IndividualPage genre="movie" />}
         />
         <Route path="/:category/:filmType/week" element={<AllPage />} />
+        <Route path="/all/:category/:filmType" element={<AllPage />} />
       </Route>
     </Routes>
   );

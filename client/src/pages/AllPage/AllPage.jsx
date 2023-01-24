@@ -12,8 +12,8 @@ const AllPage = ({ type = "" }) => {
   const { filmType, category, duration = "" } = params;
   let substr = "";
   let paramsObj = {};
-  if (params.length === 0) substr = `${filmType}/${category}`;
-  else {
+  if (Object.keys(params).length !== 0) substr = `${filmType}/${category}`;
+  else if (Object.keys(params).length === 0) {
     substr = `discover/${type.toLowerCase()}`;
   }
   if (category === "trending") substr = `${category}/${filmType}/week`;
@@ -30,7 +30,7 @@ const AllPage = ({ type = "" }) => {
             <AllFilm
               num={idx}
               relativePath={`/now_playing/${movie.id}`}
-              filmType={filmType}
+              filmType={"Movie"}
               backdrop={movie.backdrop_path}
               poster_path={movie.poster_path}
               key={movie.id}
@@ -42,7 +42,7 @@ const AllPage = ({ type = "" }) => {
             <AllFilm
               num={idx}
               relativePath={`/now_playing/${movie.id}`}
-              filmType={type}
+              filmType={"TV"}
               backdrop={movie.backdrop_path}
               poster_path={movie.poster_path}
               key={movie.id}
