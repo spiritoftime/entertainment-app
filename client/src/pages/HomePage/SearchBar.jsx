@@ -13,6 +13,7 @@ const SearchBar = () => {
         page: 1,
       }).toString(),
     });
+    inputRef.current.value = "";
   };
   return (
     <div className="items-center w-full flex gap-2 pt-4 px-4">
@@ -31,7 +32,7 @@ const SearchBar = () => {
         <input
           ref={inputRef}
           className="placeholder-shown:text-ellipsis text-white w-full focus:outline-none focus:bg-darkBlue bg-darkBlue"
-          placeholder="Search for movies or tv shows!"
+          placeholder="Search for movies!"
         />
         <button className="hover:bg-rose-500 bg-rose-600 p-2 rounded-md">
           Search

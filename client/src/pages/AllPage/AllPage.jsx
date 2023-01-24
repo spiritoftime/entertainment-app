@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import useAllFetch from "./useAllFetch";
 import Grid from "../../shared components/Grid";
 import AllFilm from "./AllFilm";
@@ -7,14 +7,17 @@ import LoadingSpinner from "../../shared components/LoadingSpinner";
 import Pagination from "./Pagination";
 
 const AllPage = ({ type = "" }) => {
+  const { pathname } = useLocation();
   const params = useParams();
   console.log(params);
   const { filmType, category, duration = "" } = params;
   let substr = "";
-  let paramsObj = {};
+
   if (Object.keys(params).length !== 0) substr = `${filmType}/${category}`;
   else if (Object.keys(params).length === 0) {
     substr = `discover/${type.toLowerCase()}`;
+  } else if (Object.keys(params).length === 0 && pathname.includes("search")) {
+    substr = "search/movie";
   }
   if (category === "trending") substr = `${category}/${filmType}/week`;
 

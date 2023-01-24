@@ -9,7 +9,8 @@ const useAllFetch = (substr) => {
   const [currPage, setCurrPage] = useState(+searchParams.get("page"));
   if (substr.startsWith("discover")) {
     paramsObj = { with_genres: +searchParams.get("genre") };
-  }
+  } else if (substr.startsWith("search"))
+    paramsObj = { query: searchParams.get("name") };
   const getFilms = async () => {
     const response = await customFetch(`${substr}`, {
       page: currPage,

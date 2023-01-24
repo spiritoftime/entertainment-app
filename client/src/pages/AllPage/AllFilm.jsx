@@ -24,8 +24,14 @@ const AllFilm = (props) => {
     >
       <div>
         <img
-          className="aspect-video object-cover"
-          src={backdrop ? buildImgUrl(backdrop) : buildImgUrl(poster_path)}
+          className="aspect-video object-cover w-full"
+          src={
+            backdrop
+              ? buildImgUrl(backdrop)
+              : poster_path
+              ? buildImgUrl(poster_path)
+              : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHXdEUvboJ7eXp4rOa8x36GZynunFQkJ42nnokQHermA&s"
+          }
           alt={"Movie image for" + title}
         />
       </div>
