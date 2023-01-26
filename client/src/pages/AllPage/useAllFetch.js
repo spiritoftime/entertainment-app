@@ -21,7 +21,7 @@ const useAllFetch = (substr) => {
 
   useEffect(() => {
     getFilms();
-  }, [currPage]);
+  }, [currPage, paramsObj]);
 
   return {
     setSearchParams,
