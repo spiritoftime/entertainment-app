@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import attribution from "../assets/attribution.svg";
-import SearchBar from "../pages/HomePage/SearchBar";
+import SearchBar from "./SearchBar";
 const Layout = () => {
   return (
     <main className="min-h-screen bg-darkBlue">

@@ -1,5 +1,5 @@
 import { Routes, Route, useParams } from "react-router-dom";
-
+import ProtectedRoute from "./shared components/ProtectedRoute";
 import "./App.css";
 import AllPage from "./pages/AllPage/AllPage";
 import Categories from "./pages/categories page/Categories";
@@ -8,6 +8,7 @@ import IndividualPage from "./pages/Individual Page/IndividualPage";
 import Login from "./pages/LoginPage/Login";
 import Register from "./pages/register page/Register";
 import Layout from "./shared components/Layout";
+import Bookmarks from "./pages/Bookmarks Page/Bookmarks";
 
 function App() {
   const { filmId, filmType, category } = useParams();
@@ -15,8 +16,17 @@ function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Register />} />
+
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage type="movie" />} />
+        <Route
+          path="/bookmarks"
+          element={
+            <ProtectedRoute>
+              <Bookmarks />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/tv_categories" element={<Categories type="tv" />} />
         <Route path="/movie_categories" element={<Categories type="movie" />} />
         <Route path="/movie" element={<AllPage type="Movie" />} />

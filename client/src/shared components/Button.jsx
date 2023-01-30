@@ -6,7 +6,7 @@ const Button = ({ url, name }) => {
   return (
     <button
       onClick={redirect}
-      className="font-bold flex gap-2 py-4 px-3 bg-blue-700 text-xs items-center rounded-lg cursor-pointer"
+      className="font-bold flex gap-2 py-4 px-3 bg-blue-700 text-xs items-center rounded-lg cursor-pointer hover:bg-blue-600"
     >
       <svg
         fill="black"

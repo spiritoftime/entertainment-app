@@ -58,7 +58,7 @@ const IndividualPage = ({ genre }) => {
         <div className="btn-div flex gap-4">
           {details && <Button url={details.homepage} name="Website" />}
           {details && (
-            <Button
+            <Button 
               url={"https://www.imdb.com/title/" + details.imdb_id}
               name="IMDB Link"
             />

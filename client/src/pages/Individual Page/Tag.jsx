@@ -15,7 +15,7 @@ const Tag = ({ name, bgClass, type }) => {
     <div
       className={`max(64px,_fit-content) border-2 p-2  border-slate-600 rounded-md ${bgClass} flex self-center justify-self-center`}
     >
-      <p className=" capitalize text-center	text-white whitespace-nowrap text-[9px] font-normal">
+      <p className=" capitalize text-center	text-white whitespace-nowrap font-bold text-sm lg:text-lg">
         {name}
       </p>
     </div>

@@ -24,4 +24,13 @@ const login = async (req, res) => {
   const token = userDoc.createJWT();
   res.status(201).json({ email: userDoc.email, token });
 };
-module.exports = { login, register };
+const verify = async (req, res) => {
+  const { token, email } = req.body;
+  const decoded = jwt.verify(token, process.env.JWT_SECRET); // returns an error
+  if (email !== decoded.name) {
+    res.status(401).json({ msg: "Not authorized" });
+    return;
+  }
+  res.status(200).json({ msg: "Authorized" });
+};
+module.exports = { login, register, verify };

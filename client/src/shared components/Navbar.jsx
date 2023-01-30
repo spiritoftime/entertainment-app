@@ -5,7 +5,7 @@ import image from "../assets/image-avatar.png";
 const Navbar = () => {
   const navigate = useNavigate();
   const redirectLoginHandler = () => {
-    navigate("/login");
+    navigate("/bookmarks");
   };
   return (
     <nav className="justify-between min-w-full md:min-w-fit md:h-[500px] md:mt-11 md:rounded-lg md:flex-col md:fixed flex p-4 bg-navColor">
