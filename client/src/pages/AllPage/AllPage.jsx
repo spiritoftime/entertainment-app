@@ -334,7 +334,7 @@ const AllPage = ({ type = "" }) => {
           type !== "TV" ? (
             <AllFilm
               num={idx}
-              relativePath={`/now_playing/${movie.id}`}
+              relativePath={`/movie/${movie.id}`}
               filmType={"Movie"}
               backdrop={movie.backdrop_path}
               poster_path={movie.poster_path}
@@ -346,7 +346,7 @@ const AllPage = ({ type = "" }) => {
           ) : (
             <AllFilm
               num={idx}
-              relativePath={`/now_playing/${movie.id}`}
+              relativePath={`/tv/${movie.id}`}
               filmType={"TV"}
               backdrop={movie.backdrop_path}
               poster_path={movie.poster_path}

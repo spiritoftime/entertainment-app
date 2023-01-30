@@ -8,17 +8,17 @@ import Detail from "./Detail";
 import Overview from "./Overview";
 import Tags from "./Tags";
 import Button from "../../shared components/Button";
-const IndividualPage = ({ genre }) => {
+const IndividualPage = ({ genre = "" }) => {
   const { filmId } = useParams();
   const fetchedData = useIndividualFetch(genre, filmId);
   if (Object.keys(fetchedData).length === 0) return <LoadingSpinner />;
   const { details, casts } = fetchedData;
   return (
-    <div className=" md:mx-auto flex flex-col md:flex-row p-4 gap-4 md:gap-10">
+    <div className="md:mx-auto flex flex-col md:flex-row p-4 gap-4 md:gap-10">
       {details && (
         <img
           className={
-            "w-[min(200px,_80%)] md:w-[min(350px,_80%)] max-h-[600px] mx-auto  md:mx-0 rounded-lg "
+            "w-[min(200px,_80%)] md:w-[min(350px,_80%)] max-h-[600px] mx-auto md:mx-0 rounded-lg "
           }
           src={buildImgUrl(details.poster_path)}
         />
@@ -48,7 +48,14 @@ const IndividualPage = ({ genre }) => {
               contentType="language"
               content={details.original_language}
             />
-            <Detail title="Year" content={details.release_date.split("-")[0]} />
+            <Detail
+              title="Year"
+              content={
+                genre === "movie"
+                  ? details.release_date.split("-")[0]
+                  : details.first_air_date.split("-")[0]
+              }
+            />
             <Detail title="Status" content={details.status} />
           </div>
         )}
@@ -58,7 +65,7 @@ const IndividualPage = ({ genre }) => {
         <div className="btn-div flex gap-4">
           {details && <Button url={details.homepage} name="Website" />}
           {details && (
-            <Button 
+            <Button
               url={"https://www.imdb.com/title/" + details.imdb_id}
               name="IMDB Link"
             />

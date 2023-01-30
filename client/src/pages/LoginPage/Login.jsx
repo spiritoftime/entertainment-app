@@ -56,7 +56,7 @@ const Login = () => {
           <div className="h-[50px] flex flex-col gap-4">
             <input
               {...register("email")}
-              className={`focus:bg-login focus:outline-none w-full border-b-gray-500 border-b-2 bg-login`}
+              className={`focus:outline-none w-full border-b-gray-500 border-b-2 bg-login`}
               type="email"
               placeholder="Email address"
             />
@@ -70,7 +70,7 @@ const Login = () => {
           </div>
           <div className="flex h-[50px] flex-col gap-4">
             <input
-              className={`focus:bg-login focus:outline-none w-full border-b-gray-500 border-b-2 bg-login`}
+              className={`focus:outline-none w-full border-b-gray-500 border-b-2 bg-login`}
               type="password"
               placeholder="Password"
               {...register("password")}

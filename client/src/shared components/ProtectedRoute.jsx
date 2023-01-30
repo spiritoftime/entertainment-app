@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Bookmarks from "../pages/Bookmarks Page/Bookmarks";
+import { IsAuthContext } from "../App";
 import LoadingSpinner from "./LoadingSpinner";
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
@@ -17,11 +17,10 @@ const ProtectedRoute = ({ children }) => {
       });
       const data = await res.json();
       setIsVerifying(false);
-      // .then((res) => {
+      // question: is there a better way of doing this, instead of having a state and showing a loading spinner?
       if (data.msg !== "Authorized") {
         navigate("/login");
       }
-      // });
     };
     checkAuth();
   }, []);
