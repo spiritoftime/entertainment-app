@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { useNavigate } from "react-router-dom";
-
+import { useContext } from "react";
+import { IsAuthContext } from "../../App";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 const formSchema = Yup.object().shape({
@@ -17,6 +18,7 @@ const formSchema = Yup.object().shape({
     .max(12, "Password cannot exceed more than 12 characters"),
 });
 const Login = () => {
+  const { isAuth, setIsAuth } = useContext(IsAuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -38,6 +40,7 @@ const Login = () => {
       const { token } = data;
       sessionStorage.setItem("jwt", token);
       sessionStorage.setItem("email", e.email);
+      setIsAuth(true);
       navigate("/");
     }
     if (res.ok === false && data.msg)
