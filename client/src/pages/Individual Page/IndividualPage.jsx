@@ -26,7 +26,7 @@ const IndividualPage = ({ genre = "" }) => {
       <div className="md:w-full md:max-w-[500px] lg:max-w-[700px] text-white flex flex-col gap-4">
         {details && (
           <h2 className="text-xl lg:text-2xl font-medium text-center">
-            {details.original_title}
+            {genre === "movie" ? details.original_title : details.name}
           </h2>
         )}
         {details && (
@@ -42,7 +42,14 @@ const IndividualPage = ({ genre = "" }) => {
         {details && <Stars vote={(details.vote_average / 2).toFixed(1)} />}
         {details && (
           <div className="grid grid-cols-2 md:flex  md:justify-between gap-y-4">
-            <Detail title="Length" content={details.runtime + " mins"} />
+            <Detail
+              title="Length"
+              content={
+                genre === "movie"
+                  ? details.runtime
+                  : details.episode_run_time + " mins"
+              }
+            />
             <Detail
               title="Language"
               contentType="language"
