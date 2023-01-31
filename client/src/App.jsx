@@ -13,8 +13,8 @@ import Bookmarks from "./pages/Bookmarks Page/Bookmarks";
 export const IsAuthContext = React.createContext();
 function App() {
   const { filmId, filmType, category } = useParams();
-  const [isAuth, setIsAuth] = useState(false);
-  const authContextObj = { isAuth, setIsAuth };
+  const [authDetails, setAuthDetails] = useState({isAuth:false,userId:''});
+  const authContextObj = { authDetails, setAuthDetails };
   return (
     <IsAuthContext.Provider value={authContextObj}>
       <Routes>

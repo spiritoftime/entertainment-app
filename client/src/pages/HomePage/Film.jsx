@@ -1,15 +1,19 @@
-import React from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import buildImgUrl from "../../helper-functions/buildImgUrl";
 import tvSVG from "../../assets/television-svgrepo-com (1).svg";
+import { IsAuthContext } from "../../App";
+
 const Film = (props) => {
   const { backdrop, id, date, title, filmType, relativePath, num } = props;
+  const { authDetails, setAuthDetails } = useContext(IsAuthContext);
   const navigate = useNavigate();
   const navigateHandler = () => {
     navigate(relativePath);
   };
   const bookmarkHandler = (e) => {
     e.stopPropagation();
+    if (!authDetails.isAuth) navigate("/login");
   };
   return (
     <div

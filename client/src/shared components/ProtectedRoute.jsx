@@ -5,11 +5,12 @@ import LoadingSpinner from "./LoadingSpinner";
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
   const [isVerifying, setIsVerifying] = useState(true);
-  const { isAuth, setIsAuth } = useContext(IsAuthContext);
+  const { authDetails, setAuthDetails } = useContext(IsAuthContext);
   useEffect(() => {
     const checkAuth = async () => {
-      if (isAuth) {
+      if (!authDetails.isAuth) {
         setIsVerifying(false);
+        navigate("/login");
         return;
       }
       const res = await fetch("http://127.0.0.1:5000/api/auth/verify", {
@@ -25,7 +26,7 @@ const ProtectedRoute = ({ children }) => {
       // question: is there a better way of doing this, instead of having a state and showing a loading spinner?
       if (data.msg !== "Authorized") {
         navigate("/login");
-      } else setIsAuth(true);
+      }
     };
     checkAuth();
   }, []);

@@ -22,7 +22,7 @@ const login = async (req, res) => {
     return;
   }
   const token = userDoc.createJWT();
-  res.status(201).json({ email: userDoc.email, token });
+  res.status(201).json({ email: userDoc.email, token, userId: userDoc._id });
 };
 const verify = async (req, res) => {
   const { token, email } = req.body;

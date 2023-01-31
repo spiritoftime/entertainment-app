@@ -18,7 +18,7 @@ const formSchema = Yup.object().shape({
     .max(12, "Password cannot exceed more than 12 characters"),
 });
 const Login = () => {
-  const { isAuth, setIsAuth } = useContext(IsAuthContext);
+  const { authDetails, setAuthDetails } = useContext(IsAuthContext);
   const navigate = useNavigate();
   const {
     register,
@@ -40,7 +40,7 @@ const Login = () => {
       const { token } = data;
       sessionStorage.setItem("jwt", token);
       sessionStorage.setItem("email", e.email);
-      setIsAuth(true);
+      setAuthDetails({ isAuth: true, userId: data.userId });
       navigate("/");
     }
     if (res.ok === false && data.msg)
