@@ -1,11 +1,10 @@
-import React from "react";
-
+import useBookmarkFetches from "../../custom hooks/useBookmarkFetches";
 const Bookmarks = () => {
-  return (
-    <div>
-      <h1>Hi there I am under the water</h1>
-    </div>
-  );
+  const data = useBookmarkFetches();
+  let films = [];
+  if (Object.keys(fetchedData).length === 0) return <LoadingSpinner />;
+  data.bookmarks.map((bookmark, idx) => {});
+  return;
 };
 
 export default Bookmarks;

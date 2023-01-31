@@ -12,6 +12,7 @@ const app = express();
 const connectDB = require("./db/connect");
 const { default: mongoose } = require("mongoose");
 const authRouter = require("./routes/authRoute");
+const bookmarkRouter = require("./routes/bookmarkRoute");
 // const authenticateUser = require("./middleware/authentication");
 // // routers
 // const authRouter = require("./routes/auth");
@@ -35,6 +36,7 @@ app.use(xss());
 
 // routes
 app.use("/api/auth", authRouter);
+app.use("/api/bookmark", bookmarkRouter);
 // app.use("/api/v1/auth", authRouter);
 // app.use("/api/v1/jobs", authenticateUser, jobsRouter);
 

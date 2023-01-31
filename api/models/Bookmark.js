@@ -7,11 +7,11 @@ const BookmarkSchema = new mongoose.Schema(
       required: [true, "Please provide user"],
     },
     filmId: {
-      type: String,
+      type: Number,
       required: [true, "Please provide a film id"],
-      maxlength: 100,
+      unique: true,
     },
   },
   { timestamps: true }
 );
-module.exports = mongoose.model("Bookmark", UserSchema);
+module.exports = mongoose.model("Bookmark", BookmarkSchema);

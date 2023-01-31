@@ -10,10 +10,11 @@ import Login from "./pages/LoginPage/Login";
 import Register from "./pages/register page/Register";
 import Layout from "./shared components/Layout";
 import Bookmarks from "./pages/Bookmarks Page/Bookmarks";
+
 export const IsAuthContext = React.createContext();
 function App() {
   const { filmId, filmType, category } = useParams();
-  const [authDetails, setAuthDetails] = useState({isAuth:false,userId:''});
+  const [authDetails, setAuthDetails] = useState({ isAuth: false, userId: "" });
   const authContextObj = { authDetails, setAuthDetails };
   return (
     <IsAuthContext.Provider value={authContextObj}>
@@ -37,7 +38,10 @@ function App() {
             element={<Categories type="movie" />}
           />
           <Route path="/movie" element={<AllPage type="Movie" />} />
-          <Route path="/movie/:filmId" element={<IndividualPage genre="movie" />} />
+          <Route
+            path="/movie/:filmId"
+            element={<IndividualPage genre="movie" />}
+          />
           <Route path="/tv" element={<AllPage type="TV" />} />
           <Route path="/tv/:filmId" element={<IndividualPage genre="tv" />} />
           <Route path="/search" element={<AllPage />} />

@@ -28,16 +28,19 @@ const Login = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
   const submitHandler = async (e) => {
-    const res = await fetch("http://127.0.0.1:5000/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: e.email, password: e.password }),
-    });
+    const res = await fetch(
+      "https://spiritandtime-movie-app.com/api/auth/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: e.email, password: e.password }),
+      }
+    );
 
     const data = await res.json();
     if (res.ok) {
       // add the token into header here
-      const { token } = data;
+      const { token, userId } = data;
       sessionStorage.setItem("jwt", token);
       sessionStorage.setItem("email", e.email);
       setAuthDetails({ isAuth: true, userId: data.userId });
